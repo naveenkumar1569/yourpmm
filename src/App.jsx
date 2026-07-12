@@ -1,23 +1,12 @@
-import Header from './components/Header.jsx'
-import Hero from './components/Hero.jsx'
-import Experience from './components/Experience.jsx'
-import Projects from './components/Projects.jsx'
-import Writing from './components/Writing.jsx'
-import Contact from './components/Contact.jsx'
-import Footer from './components/Footer.jsx'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import CaseStudy from './pages/CaseStudy.jsx'
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <Experience />
-        <Projects />
-        <Writing />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/work/:slug" element={<CaseStudy />} />
+    </Routes>
   )
 }
