@@ -2458,6 +2458,20 @@ img {
     gap: 12px;
   }
 
+  .prod__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .prod__head {
+    flex-wrap: wrap;
+  }
+
+  .prod__metric {
+    text-align: left;
+  }
+
   .meta {
     grid-template-columns: repeat(2, 1fr);
   }
