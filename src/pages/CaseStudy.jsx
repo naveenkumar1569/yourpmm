@@ -523,9 +523,9 @@ function Block({ b }) {
   }
 }
 
-function Story({ s, num }) {
+function Story({ s, num, id }) {
   return (
-    <div className="story reveal">
+    <div className="story reveal" id={id}>
       <div className="story__head">
         <span className="story__num">{num}</span>
         <div className="story__heading">
@@ -870,10 +870,29 @@ export default function CaseStudy() {
         <section className="csec reveal">
           <div className="shell">
             <p className="eyebrow">{cs.storiesLabel || 'Featured work'}</p>
-            <div className="stories">
-              {cs.stories.map((s, i) => (
-                <Story key={i} s={s} num={String(i + 1).padStart(2, '0')} />
-              ))}
+            <div className="stories-container">
+              <div className="stories">
+                {cs.stories.map((s, i) => (
+                  <Story key={i} s={s} num={String(i + 1).padStart(2, '0')} id={`story-${i}`} />
+                ))}
+              </div>
+              {slug === 'zoho-projects' && (
+                <aside className="stories-index">
+                  <div className="stories-index__sticky">
+                    <p className="stories-index__title">Index</p>
+                    <ol className="stories-index__list">
+                      {cs.stories.map((s, i) => (
+                        <li key={i} className="stories-index__item">
+                          <a href={`#story-${i}`} className="stories-index__link">
+                            <span className="stories-index__num">{String(i + 1).padStart(2, '0')}</span>
+                            <span className="stories-index__text">{s.title}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                </aside>
+              )}
             </div>
           </div>
         </section>

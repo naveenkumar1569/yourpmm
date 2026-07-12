@@ -3471,3 +3471,91 @@ img {
     gap: 16px;
   }
 }
+
+/* Sidebar Index for Zoho work experience */
+.stories-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .stories-container {
+    grid-template-columns: 1fr 320px;
+  }
+}
+
+.stories-index {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .stories-index {
+    display: block;
+  }
+}
+
+.stories-index__sticky {
+  position: sticky;
+  top: 100px;
+  padding: 28px 24px;
+  background: var(--purple-soft);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+}
+
+.stories-index__title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.stories-index__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.stories-index__item {
+  position: relative;
+}
+
+.stories-index__link {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.stories-index__link:hover {
+  color: var(--accent);
+}
+
+.stories-index__num {
+  font-family: var(--font-hand);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.stories-index__text {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.story {
+  scroll-margin-top: 84px;
+}
