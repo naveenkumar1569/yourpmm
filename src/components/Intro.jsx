@@ -6,7 +6,7 @@ export default function Intro() {
       <div className="shell">
         <p className="intro-lead">{intro[0]}</p>
         <p className="intro-sub">{intro[1]}</p>
-        <a className="dl-btn" href="/resume.pdf" download="Naveen_Kumar_Resume.pdf">
+        <a className="dl-btn" href="/Naveen_Kumar_Resume.pdf" download="Naveen_Kumar_Resume.pdf">
           Download résumé
           <svg
             width="17"
