@@ -2110,7 +2110,6 @@ img {
 
 /* featured work stories */
 .stories {
-  margin-top: 28px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -3474,10 +3473,10 @@ img {
 
 /* Sidebar Index for Zoho work experience */
 .stories-container {
+  margin-top: 28px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  align-items: start;
 }
 
 @media (min-width: 1024px) {
@@ -3488,6 +3487,7 @@ img {
 
 .stories-index {
   display: none;
+  align-self: stretch;
 }
 
 @media (min-width: 1024px) {
