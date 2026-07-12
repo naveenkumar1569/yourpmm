@@ -2111,8 +2111,9 @@ img {
 /* featured work stories */
 .stories {
   margin-top: 28px;
-  columns: 2;
-  column-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .story {
