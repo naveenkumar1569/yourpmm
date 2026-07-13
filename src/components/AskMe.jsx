@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { intro } from '../data.js'
 
 const EXAMPLES = [
   'Summarize Naveen in 30 seconds',
@@ -68,17 +69,46 @@ export default function AskMe() {
   }
 
   return (
-    <section className="secx askme reveal">
+    <section id="about" className="secx askme reveal">
       <div className="shell">
-        <p className="eyebrow">Ask about my experience</p>
-        <h2 className="secx__title">
-          Curious about something?
+        {/* Merged Intro Content */}
+        <p className="intro-lead">{intro[0]}</p>
+        <p className="intro-sub">{intro[1]}</p>
+        
+        <div style={{ marginTop: '20px', marginBottom: '40px' }}>
+          <a className="dl-btn" href="/Naveen_Kumar_Resume.pdf" download="Naveen_Kumar_Resume.pdf">
+            Download résumé
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              style={{ marginLeft: '8px', verticalAlign: 'middle' }}
+            >
+              <path d="M12 3v12" />
+              <path d="M7 12l5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+          </a>
+        </div>
+
+        <hr style={{ border: 'none', borderTop: '1px solid var(--line)', width: '100%', margin: '40px 0' }} />
+
+        {/* AI Section with statement explaining it was built to make learning about you easy */}
+        <p className="eyebrow" style={{ marginTop: '20px' }}>Interactive Portfolio</p>
+        <h2 className="secx__title" style={{ margin: '0 auto', maxWidth: '32ch', textAlign: 'center' }}>
+          Ask about my experience
         </h2>
-        <p className="secx__intro">
-          Ask anything about my background, skills, or projects — the answers come straight from this site's content.
+        <p className="secx__intro" style={{ margin: '16px auto 32px auto', textAlign: 'center' }}>
+          I built this AI Q&A feature to make it quick and easy for you to learn about my background, skills, or projects. Ask a question below, and it will respond using only verified facts from my case studies.
         </p>
 
-        <form className="askme__form" onSubmit={handleSubmit}>
+        <form className="askme__form" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '640px', margin: '32px auto 0 auto' }}>
           <div className="askme__inputwrap">
             <input
               id="askme-input"
@@ -110,7 +140,7 @@ export default function AskMe() {
           </div>
         </form>
 
-        <div className="askme__examples">
+        <div className="askme__examples" style={{ justifyContent: 'center', maxWidth: '640px', margin: '16px auto 0 auto' }}>
           {EXAMPLES.map((ex) => (
             <button
               key={ex}
@@ -125,7 +155,7 @@ export default function AskMe() {
         </div>
 
         {(answer || loading) && (
-          <div className="askme__answer" ref={answerRef}>
+          <div className="askme__answer" style={{ width: '100%', maxWidth: '640px', margin: '28px auto 0 auto', textAlign: 'left' }} ref={answerRef}>
             <p className="askme__answer-label">Answer</p>
             <p className="askme__answer-text">
               {answer}
@@ -135,7 +165,7 @@ export default function AskMe() {
         )}
 
         {error && (
-          <div className="askme__error">
+          <div className="askme__error" style={{ width: '100%', maxWidth: '640px', margin: '16px auto 0 auto' }}>
             <p>{error}</p>
           </div>
         )}
