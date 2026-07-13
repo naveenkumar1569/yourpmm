@@ -75,7 +75,7 @@ export default function AskMe() {
           Ask Naveen
         </h2>
         <p className="secx__intro" style={{ margin: '14px auto 28px auto', fontSize: '18px', opacity: 0.9, maxWidth: '52ch' }}>
-          I built this custom AI to make it easier (and a lot more interesting) to explore my background, philosophy, and GTM experience.
+          👋 Hi, I’m Naveen’s AI. Ask me anything about his experience, leadership style, products, or even paste a job description to see how he matches.
         </p>
 
         <form className="askme__form" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '640px', margin: '0 auto' }}>
