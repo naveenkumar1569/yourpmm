@@ -78,28 +78,6 @@ export default function AskMe() {
           I built this AI Q&A tool to make it easy for you to instantly learn about my PMM background, GTM metrics, and projects.
         </p>
 
-        <div style={{ marginBottom: '32px' }}>
-          <a className="dl-btn" href="/Naveen_Kumar_Resume.pdf" download="Naveen_Kumar_Resume.pdf" style={{ marginTop: '0' }}>
-            Download résumé
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              style={{ marginLeft: '8px', verticalAlign: 'middle' }}
-            >
-              <path d="M12 3v12" />
-              <path d="M7 12l5 5 5-5" />
-              <path d="M5 21h14" />
-            </svg>
-          </a>
-        </div>
-
         <form className="askme__form" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '640px', margin: '0 auto' }}>
           <div className="askme__inputwrap">
             <input
@@ -144,6 +122,28 @@ export default function AskMe() {
               {ex}
             </button>
           ))}
+        </div>
+
+        <div style={{ marginTop: '40px', marginBottom: '8px' }}>
+          <a className="dl-btn" href="/Naveen_Kumar_Resume.pdf" download="Naveen_Kumar_Resume.pdf" style={{ marginTop: '0' }}>
+            Download résumé
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              style={{ marginLeft: '8px', verticalAlign: 'middle' }}
+            >
+              <path d="M12 3v12" />
+              <path d="M7 12l5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+          </a>
         </div>
 
         {(answer || loading) && (
