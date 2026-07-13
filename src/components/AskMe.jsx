@@ -97,8 +97,27 @@ export default function AskMe() {
     <section id="about" className="secx askme reveal">
       <div className="shell" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <p className="eyebrow">Interactive Portfolio</p>
-        <h2 className="secx__title" style={{ margin: '0 auto', maxWidth: '32ch' }}>
+        <h2 className="secx__title" style={{ margin: '0 auto', maxWidth: '32ch', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
           Ask Naveen
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            style={{ verticalAlign: 'middle', flexShrink: 0 }}
+          >
+            <path
+              d="M12 3c.13 2.87 2.13 4.87 5 5-2.87.13-4.87 2.13-5 5-.13-2.87-2.13-4.87-5-5 2.87-.13 4.87-2.13 5-5Zm0 13c.08 1.72 1.28 2.92 3 3-1.72.08-2.92 1.28-3 3-.08-1.72-1.28-2.92-3-3 1.72-.08 2.92-1.28 3-3Z"
+              fill="url(#geminiGradient)"
+            />
+            <defs>
+              <linearGradient id="geminiGradient" x1="4" y1="3" x2="20" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#8b5cf6" />
+                <stop offset="50%" stopColor="#a855f7" />
+                <stop offset="100%" stopColor="#6366f1" />
+              </linearGradient>
+            </defs>
+          </svg>
         </h2>
         <p className="secx__intro" style={{ margin: '14px auto 28px auto', fontSize: '18px', opacity: 0.9, maxWidth: '52ch' }}>
           Hi, I’m Naveen’s AI. Ask me about his PMM background, SaaS products, or paste a job description. I have access to all his metrics and none of his search history.
