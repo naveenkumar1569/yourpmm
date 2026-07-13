@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react'
-import { intro } from '../data.js'
 
 const EXAMPLES = [
   'Summarize Naveen in 30 seconds',
@@ -70,13 +69,17 @@ export default function AskMe() {
 
   return (
     <section id="about" className="secx askme reveal">
-      <div className="shell">
-        {/* Merged Intro Content */}
-        <p className="intro-lead">{intro[0]}</p>
-        <p className="intro-sub">{intro[1]}</p>
-        
-        <div style={{ marginTop: '20px', marginBottom: '40px' }}>
-          <a className="dl-btn" href="/Naveen_Kumar_Resume.pdf" download="Naveen_Kumar_Resume.pdf">
+      <div className="shell" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+        <p className="eyebrow">Interactive Portfolio</p>
+        <h2 className="secx__title" style={{ margin: '0 auto', maxWidth: '32ch' }}>
+          Ask Naveen
+        </h2>
+        <p className="secx__intro" style={{ margin: '14px auto 28px auto', fontSize: '17px', opacity: 0.9, maxWidth: '52ch' }}>
+          I built this AI Q&A tool to make it easy for you to instantly learn about my PMM background, GTM metrics, and projects.
+        </p>
+
+        <div style={{ marginBottom: '32px' }}>
+          <a className="dl-btn" href="/Naveen_Kumar_Resume.pdf" download="Naveen_Kumar_Resume.pdf" style={{ marginTop: '0' }}>
             Download résumé
             <svg
               width="17"
@@ -97,18 +100,7 @@ export default function AskMe() {
           </a>
         </div>
 
-        <hr style={{ border: 'none', borderTop: '1px solid var(--line)', width: '100%', margin: '40px 0' }} />
-
-        {/* AI Section with statement explaining it was built to make learning about you easy */}
-        <p className="eyebrow" style={{ marginTop: '20px' }}>Interactive Portfolio</p>
-        <h2 className="secx__title" style={{ margin: '0 auto', maxWidth: '32ch', textAlign: 'center' }}>
-          Ask about my experience
-        </h2>
-        <p className="secx__intro" style={{ margin: '16px auto 32px auto', textAlign: 'center' }}>
-          I built this AI Q&A feature to make it quick and easy for you to learn about my background, skills, or projects. Ask a question below, and it will respond using only verified facts from my case studies.
-        </p>
-
-        <form className="askme__form" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '640px', margin: '32px auto 0 auto' }}>
+        <form className="askme__form" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '640px', margin: '0 auto' }}>
           <div className="askme__inputwrap">
             <input
               id="askme-input"
