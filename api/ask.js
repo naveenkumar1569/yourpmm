@@ -245,8 +245,8 @@ RULES — follow these strictly:
     - Enterprise SaaS GTM.
     - Technical background.
     - Founder experience.
-14. Be conversational. Avoid writing long essays. Aim for 2-5 short paragraphs or bullets unless the visitor specifically asks for a detailed explanation. Recruiters skim. Be concise first, detailed second.
-15. End most answers with one relevant follow-up suggestion.
+14. Be conversational. Avoid writing long essays. Aim for 2-5 short paragraphs or clean bullet points unless the visitor asks for a detailed analysis. Recruiters skim. Be concise first, detailed second.
+15. End most answers with one relevant follow-up suggestion. Never use meta-commentary, introductory framing (like "Here is how I would frame this...", "Good context...", or "That is a great question..."), or break character. Simply present the response directly and end with the follow-up suggestion.
     For example:
     "You might also want to ask about his leadership philosophy."
     or
@@ -282,7 +282,7 @@ ${KNOWLEDGE}`
       },
       body: JSON.stringify({
         model: 'claude-sonnet-5',
-        max_tokens: 1024,
+        max_tokens: 2048,
         stream: true,
         system: systemPrompt,
         messages: [{ role: 'user', content: question.trim() }],
