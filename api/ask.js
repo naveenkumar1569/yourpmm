@@ -15,9 +15,34 @@ Before Zoho he was a Software Engineer at Cognizant (2015–2016), building ente
 
 Contact: naveenkumar085@gmail.com · +91 7358517700 · linkedin.com/in/naveen2109
 
-=== INTRO ===
-"I'm a Product Marketing Manager at Zoho with a decade spent taking complex products to market, and a builder of SaaS products."
-"What I care about most is turning a complex product into a story people understand, believe, and buy into. That starts with getting close to customers and understanding not just what they do, but why their work matters."
+=== WHAT MAKES NAVEEN DIFFERENT ===
+Many Product Marketers have never built software. Many founders have never marketed enterprise products. Naveen has done both.
+He has marketed products used by millions while also building AI-native SaaS products himself.
+This combination shapes how he approaches GTM, positioning, pricing, and customer discovery.
+
+=== PRODUCT MARKETING PHILOSOPHY ===
+Naveen believes great Product Marketing starts with customer understanding, not messaging.
+His GTM positioning and messaging process:
+Customer interviews → Identify recurring pain points → Build positioning → Validate messaging → Build GTM → Measure adoption → Iterate.
+Key beliefs:
+- Positioning is far more important than promotion.
+- Customers don't buy features — they buy outcomes.
+- The best launches begin months before the launch day through customer discovery.
+- Evidence over opinions always.
+- Product Marketing exists to drive business outcomes, not marketing outputs.
+
+=== LEADERSHIP ===
+Naveen leads a 15-member global marketing organization comprising Product Marketing, SEO, Content, and Social Media.
+Responsibilities include: Hiring, Coaching, Performance management, Goal setting, Budget allocation, Prioritization, Cross-functional leadership.
+His leadership style centers on high ownership, autonomy, and customer obsession. He prefers giving teams context instead of detailed instructions.
+
+=== THINGS THAT DIDN'T WORK & FAILURES ===
+- Zoho Projects Plus V1 Positioning:
+  The initial messaging focused too much on bundled products. Customer interviews quickly revealed that buyers cared about outcomes instead of bundled products. The messaging was rewritten before launch based on this feedback.
+  Lesson: Always validate messaging with real users before scaling.
+- SwitchQR:
+  Originally targeted generic SMBs. Customer interviews showed restaurants had a much stronger and immediate pain point with dynamic QR codes. The marketing shifted to focus on hospitality and restaurants.
+  Lesson: Tighten target focus early through validation rather than broad targeting.
 
 === ZOHO — PRIMARY EXPERIENCE (2016–present) ===
 Role: Product Marketing Manager
@@ -76,6 +101,8 @@ Category: Data Visualization
 Stage: Live · 500+ users
 Link: https://reochart.com
 A data-storytelling tool that turns raw data into clean, shareable charts in minutes — without a BI tool or designer.
+Why Reochart?
+Naveen wanted to stop being just "someone who markets products" and become someone who builds products. Reochart gave him hands-on experience with: Customer discovery, Pricing, UX, Development, SEO, Launches, Support, Retention, and Analytics. Everything a founder experiences.
 Positioning: sits between heavy BI tools (overkill) and spreadsheet charts (generic). Emphasises speed and polish over feature breadth. "The fastest path from raw data to a chart you're proud to share."
 Target audience: founders, marketers, consultants, operators who need charts often but aren't analysts.
 GTM: Product-led. Growth loop: make → share → someone makes their own. The output is the distribution. Light Reochart credit on shared charts = organic distribution.
@@ -89,6 +116,8 @@ Category: QR / Engagement
 Stage: Live · 400+ users
 Link: https://switch-qr.com
 A dynamic QR platform — change what's behind a code anytime without reprinting.
+Why SwitchQR?
+To gain deep experience in pricing tiers, self-serve growth loops, and targeted user acquisitions. SwitchQR gave him complete ownership of customer discovery, engineering, support, and pricing-led GTM motion.
 Positioning: "Sell flexibility, not codes." Positioned around what free static tools can't do: change destination after printing, schedule, measure. An ongoing engagement channel, not a one-off utility.
 Target: restaurants & hospitality, retail & packaging, marketers, events & print.
 GTM: Pricing-led. Tiers built around real usage (number of codes, scans, features). Self-serve signup with free tier.
@@ -106,26 +135,6 @@ Role: Software Engineer
 Focus: SDLC, enterprise applications
 Built enterprise software across the full SDLC before pivoting to product marketing.
 This technical grounding still shapes how Naveen partners with product teams and markets to technical buyers.
-
-=== NAVEEN'S CORE SKILLS & EXPERIENCE AREAS ===
-- Product positioning and messaging
-- Go-to-market strategy
-- Product launches
-- Pricing and packaging
-- Sales enablement
-- Customer marketing & advocacy
-- Voice of Customer programs
-- Analyst relations
-- Strategic partnerships
-- Customer events and roadshows
-- Field marketing
-- Brand marketing (including OOH)
-- Creator & media collaborations
-- Content & SEO
-- Community & forum marketing
-- Product-led growth
-- Building SaaS products from scratch (technical + marketing)
-- AI-native product development (Compare)
 `.trim()
 
 /* ------------------------------------------------------------------ */
@@ -153,20 +162,28 @@ export default async function handler(req, res) {
   }
 
   const systemPrompt = `You are the AI assistant for Naveen Kumar's portfolio website (yourpmm.com).
-Your job is to answer questions about Naveen's experience, projects, leadership, product marketing philosophy, and career.
-You are not a generic AI assistant. You are representing Naveen during a conversation with recruiters, hiring managers, founders, CEOs, VP Marketings, and Product Leaders.
+Your job is to represent Naveen during a conversation with recruiters, hiring managers, founders, CEOs, VP Marketings, and Product Leaders.
 
 RULES — follow these strictly:
 1. Speak about Naveen in third person, but talk naturally, confidently, and concisely.
-2. DO NOT answer like a resume or ChatGPT. Answer like Naveen is sitting across the table having coffee with the recruiter.
-3. Always answer based on Naveen's actual experience provided in the CONTENT. Never exaggerate or invent experience.
-4. Back every claim with evidence or specific stats from Naveen's experience whenever possible.
+2. The goal is not just to answer questions. The goal is to help the visitor understand whether they should hire Naveen. Every answer should leave the visitor with a clearer understanding of his experience, thinking, and strengths. Answer like Naveen is sitting across the table having coffee with the recruiter.
+3. Always answer based on Naveen's actual experience and philosophy. Never exaggerate, hallucinate, or invent experience.
+4. Back every claim with evidence, specific stories, or metrics from his experience.
 5. If you don't know something, say so instead of making assumptions.
-6. NEVER use phrases like: "Based on the information provided...", "It appears...", "According to the website...", "The resume says...", or "As an AI...". Talk like you already know Naveen.
-7. If someone asks: "Is Naveen a good fit?" or a similar fit-related question, do not simply say yes. Explain WHY by mapping the question back to his experience and key attributes.
-8. If the question is completely unrelated to Naveen's background, work, or skills, politely redirect: "I can only answer questions about Naveen's experience, work, and SaaS building."
+6. If the visitor asks for an opinion or how to approach a product marketing problem, answer using Naveen's philosophy and experience instead of remaining neutral or listing generic frameworks.
+7. NEVER use phrases like: "Based on the information provided...", "It appears...", "According to the website...", "The resume says...", or "As an AI...". Talk like you already know Naveen.
+8. If the visitor pastes a job description:
+   - Summarize the role.
+   - Evaluate how well Naveen matches.
+   - Explain WHY.
+   - Highlight his relevant experience.
+   - Mention genuine gaps if they exist (be honest; being accurate is more important than sounding impressive).
+9. If someone asks: "Is Naveen a good fit?" or a similar fit question:
+   - Map it back to his unique combination: enterprise product marketing (marketing to millions at Zoho), AI-native product building (Reochart, SwitchQR, Compare), and 0-to-1 execution.
+   - Explain WHY he fits, using concrete achievements and qualities, while maintaining a genuine, builder-first tone.
+10. If the question is completely unrelated to Naveen's background, work, or skills, politely redirect: "I can only answer questions about Naveen's experience, work, and SaaS building."
 
-IMPORTANT INSIGHTS ABOUT NAVEEN:
+ABOUT NAVEEN:
 - Naveen believes Product Marketing is about driving business outcomes, not producing marketing assets.
 - He enjoys building products more than talking about products. He built Reochart and SwitchQR because he wanted to experience the entire product lifecycle himself instead of only marketing products built by others.
 - He believes AI has fundamentally changed how products are built and marketed. He uses Claude daily and built both products using AI-native workflows.
