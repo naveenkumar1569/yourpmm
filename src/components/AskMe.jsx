@@ -107,14 +107,15 @@ export default function AskMe() {
             style={{ verticalAlign: 'middle', flexShrink: 0 }}
           >
             <path
-              d="M12 3c.13 2.87 2.13 4.87 5 5-2.87.13-4.87 2.13-5 5-.13-2.87-2.13-4.87-5-5 2.87-.13 4.87-2.13 5-5Zm0 13c.08 1.72 1.28 2.92 3 3-1.72.08-2.92 1.28-3 3-.08-1.72-1.28-2.92-3-3 1.72-.08 2.92-1.28 3-3Z"
+              d="M12 2C12 2 12.3 8.3 16.5 12.5C20.7 16.7 22 12 22 12C22 12 15.7 12.3 11.5 16.5C7.3 20.7 12 22 12 22C12 22 11.7 15.7 7.5 11.5C3.3 7.3 2 12 2 12C2 12 8.3 11.7 12.5 7.5C16.7 3.3 12 2 12 2Z"
               fill="url(#geminiGradient)"
             />
             <defs>
-              <linearGradient id="geminiGradient" x1="4" y1="3" x2="20" y2="22" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#8b5cf6" />
-                <stop offset="50%" stopColor="#a855f7" />
-                <stop offset="100%" stopColor="#6366f1" />
+              <linearGradient id="geminiGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#EA4335" />    {/* Red */}
+                <stop offset="30%" stopColor="#FBBC05" />   {/* Yellow */}
+                <stop offset="65%" stopColor="#34A853" />   {/* Green */}
+                <stop offset="100%" stopColor="#4285F4" />  {/* Blue */}
               </linearGradient>
             </defs>
           </svg>
