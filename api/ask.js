@@ -1,0 +1,239 @@
+// Vercel Serverless Function — POST /api/ask
+// Streams a Claude response grounded in the site's actual content.
+// The Anthropic API key is read from an environment variable and never
+// exposed to the client.
+
+/* ------------------------------------------------------------------ */
+/*  1.  FLATTEN SITE CONTENT INTO A KNOWLEDGE DOCUMENT                */
+/* ------------------------------------------------------------------ */
+
+const KNOWLEDGE = `
+=== ABOUT NAVEEN KUMAR ===
+Naveen Kumar is a Product Marketing Manager at Zoho (2016–present) and an independent SaaS builder.
+He has a decade of experience taking complex products to market.
+Before Zoho he was a Software Engineer at Cognizant (2015–2016), building enterprise software across the full SDLC.
+
+Contact: naveenkumar085@gmail.com · +91 7358517700 · linkedin.com/in/naveen2109
+
+=== INTRO ===
+"I'm a Product Marketing Manager at Zoho with a decade spent taking complex products to market, and a builder of SaaS products."
+"What I care about most is turning a complex product into a story people understand, believe, and buy into. That starts with getting close to customers and understanding not just what they do, but why their work matters."
+
+=== ZOHO — PRIMARY EXPERIENCE (2016–present) ===
+Role: Product Marketing Manager
+Suite: Zoho Projects, Zoho Sprints, Zoho BugTracker, Zoho Projects Plus
+Regions: North America, Europe, MENA, APAC, ANZ (5 global regions)
+Responsibilities: positioning & messaging, go-to-market & launches, pricing & packaging, sales enablement, customer advocacy, analyst relations, global events, voice of customer, strategic partnerships.
+
+Key stats:
+- $6M+ annual marketing budget owned
+- $750K+ yearly event & campaign spend
+- 75+ customer stories & testimonials
+- 30+ customer-facing events run
+- 5 global regions covered
+- ~60% fewer clicks on key workflows (usability improvements)
+
+--- Story 01: Marketing Zoho Projects in a crowded category (Positioning & go-to-market) ---
+Project management is one of the most competitive software categories. The approach was to out-clarify, not out-shout competitors like Asana, Monday, ClickUp, and Jira. Lead with the job the customer is trying to do, prove it with real customers, and localise the story across regions.
+Scale: Millions of teams on Zoho Projects worldwide, 5 regions with localised GTM, 10 years owning the product's story, full lifecycle from positioning to enablement.
+
+--- Story 02: Building brand with out-of-home (Brand marketing) ---
+OOH advertising: airport and tech-hub billboards, transit, summit signage. Paired with digital retargeting in same regions. Focus on familiarity, not clicks.
+Reach: 10M+ estimated impressions, US + India markets including NYC Times Square, 5 formats (airport, taxi, transit, hoarding, event), 3+ major airports.
+
+--- Story 03: A five-year partnership with PMI (Partnerships & community) ---
+Since 2019, invested in being a consistent part of the PMI community through sponsorships, chapter events, webinars, and certification programs.
+Scale: 10+ PMI chapters engaged, 5+ global summits attended, 20+ joint webinars & sessions, 3 regions of PMI presence.
+
+--- Story 04: Building the customer advocacy engine (Customer advocacy) ---
+Built a repeatable engine that turns customers into proof, organised by vertical, use case, company size, and deployment model. Not just collecting testimonials.
+Output: 75+ customer stories and testimonials, 30+ customer videos produced, 12+ industries covered, 5 regions represented. 60%+ of enterprise deals backed by matched customer proof.
+Customer videos include Ultraviolette (electric vehicles), Brigade Group (reduced timelines by 50%), Pizza Factory.
+
+--- Story 05: Creator and media collaborations (Creator & media) ---
+Put Zoho Projects in front of new audiences through creators and tech media, including Linus Tech Tips (global tech audience), MobileAppDaily, Tech & Data.
+Reach: Millions of combined views, 3+ creator & media partners, global reach beyond owned channels.
+
+--- Story 06: Launching Zoho Projects Plus (Product launch) ---
+Brought Zoho Projects, Sprints, Analytics, and WorkDrive together. The challenge was the mental model, not the software. Positioned around workflow and outcome, not a list of bundled products.
+Process: customer interviews → insight clustering → positioning options → messaging hierarchy → launch assets.
+Messaging evolved from "an integrated suite" (V1) to "one platform to plan, execute, collaborate, and report on projects" (V2) after customers said they didn't want another bundle.
+Results vs targets: ARR first 5 months: target $100K, actual $150K (+50%). Enterprise customers: target 20, actual 46 (+130%). Free-to-paid conversion: target 8%, actual 15% (+7pts).
+Reflection: "If I launched Projects Plus today, I'd validate the messaging with real customers before finalising a single asset."
+
+--- Story 07: Taking product marketing on the road (Field marketing & events) ---
+Roadshows across 9 countries for hands-on workshops and conversations digital can't create. Richest source of customer insight.
+Scale: 500+ attendees hosted, 8+ cities toured, 9 countries, 40+ customer interviews captured, 15+ hands-on workshops, 50 case studies sourced.
+
+--- Story 08: Turning feedback into product decisions (Voice of customer) ---
+Ran a VoC program with Product, Support, and Engineering. Identified overloaded workflows using session recordings and click-path data.
+Friction areas: Core workflow (92%), Navigation (64%), Onboarding (52%), Search (41%), Notifications (33%).
+Outcome: ~60% fewer clicks on key actions, 8 core workflows simplified, 2× CSAT on redesigned flows.
+
+=== REOCHART — BUILT FROM SCRATCH ===
+Role: Founder · Product + Marketing (solo)
+Category: Data Visualization
+Stage: Live · 500+ users
+Link: https://reochart.com
+A data-storytelling tool that turns raw data into clean, shareable charts in minutes — without a BI tool or designer.
+Positioning: sits between heavy BI tools (overkill) and spreadsheet charts (generic). Emphasises speed and polish over feature breadth. "The fastest path from raw data to a chart you're proud to share."
+Target audience: founders, marketers, consultants, operators who need charts often but aren't analysts.
+GTM: Product-led. Growth loop: make → share → someone makes their own. The output is the distribution. Light Reochart credit on shared charts = organic distribution.
+Channels: Reddit (r/dataisbeautiful, r/DataVizRequests, r/SaaS), Indie Hackers, Hacker News Show HN, Product Hunt, X (building in public), Slack/Discord groups.
+Content & SEO: long-tail high-intent searches ("how to make an animated bar chart"), comparison pages, template gallery as programmatic landing pages.
+Affiliate & partnerships program for creators, newsletter writers, educators.
+
+=== SWITCHQR — BUILT FROM SCRATCH ===
+Role: Founder · Product + Marketing (solo)
+Category: QR / Engagement
+Stage: Live · 400+ users
+Link: https://switch-qr.com
+A dynamic QR platform — change what's behind a code anytime without reprinting.
+Positioning: "Sell flexibility, not codes." Positioned around what free static tools can't do: change destination after printing, schedule, measure. An ongoing engagement channel, not a one-off utility.
+Target: restaurants & hospitality, retail & packaging, marketers, events & print.
+GTM: Pricing-led. Tiers built around real usage (number of codes, scans, features). Self-serve signup with free tier.
+Channels: Reddit (r/smallbusiness, r/marketing, r/restaurateur), LinkedIn, Product Hunt, Indie Hackers. SEO targeting "dynamic QR code", "editable QR code". Comparison pages against free static generators. Affiliate program + partnerships with print shops, agencies, menu/POS tools.
+
+=== COMPARE — IN DEVELOPMENT ===
+Role: Founder · Product + Marketing
+Category: Competitive Intelligence
+Stage: In development (not yet live)
+An AI-native competitor intelligence platform. Making competitive intelligence continuous and automatic instead of battle-cards that are out of date the day they ship.
+GTM shaped alongside the build from day zero.
+
+=== COGNIZANT — WHERE IT STARTED (2015–2016) ===
+Role: Software Engineer
+Focus: SDLC, enterprise applications
+Built enterprise software across the full SDLC before pivoting to product marketing.
+This technical grounding still shapes how Naveen partners with product teams and markets to technical buyers.
+
+=== NAVEEN'S CORE SKILLS & EXPERIENCE AREAS ===
+- Product positioning and messaging
+- Go-to-market strategy
+- Product launches
+- Pricing and packaging
+- Sales enablement
+- Customer marketing & advocacy
+- Voice of Customer programs
+- Analyst relations
+- Strategic partnerships
+- Customer events and roadshows
+- Field marketing
+- Brand marketing (including OOH)
+- Creator & media collaborations
+- Content & SEO
+- Community & forum marketing
+- Product-led growth
+- Building SaaS products from scratch (technical + marketing)
+- AI-native product development (Compare)
+`.trim()
+
+/* ------------------------------------------------------------------ */
+/*  2.  HANDLER                                                        */
+/* ------------------------------------------------------------------ */
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST')
+    return res.status(405).json({ error: 'Method not allowed' })
+  }
+
+  const apiKey = process.env.ANTHROPIC_API_KEY
+  if (!apiKey) {
+    return res.status(500).json({ error: 'API key not configured' })
+  }
+
+  const { question } = req.body || {}
+  if (!question || typeof question !== 'string' || question.trim().length === 0) {
+    return res.status(400).json({ error: 'A question is required' })
+  }
+
+  if (question.length > 1000) {
+    return res.status(400).json({ error: 'Question is too long' })
+  }
+
+  const systemPrompt = `You are an assistant embedded on Naveen Kumar's portfolio website (yourpmm.com). Your ONLY job is to answer questions about Naveen's professional experience, skills, and projects using the content provided below.
+
+RULES — follow these strictly:
+1. Answer ONLY from the supplied content. If the question is not covered, say so honestly: "That isn't covered in the content on this site" or similar. Never invent facts, metrics, or experiences.
+2. Speak about Naveen in third person. Use a direct, humble tone — no corporate fluff, no self-congratulatory language. Be factual and concise.
+3. Keep answers to 2-4 sentences unless the visitor asks for a summary or more detail.
+4. Where relevant, mention which project or story the answer draws from, e.g. "see the Zoho Projects Plus launch story" or "from his work on Reochart."
+5. If someone asks whether Naveen is a fit for a role or company, respond with qualitative reasoning — relevant experience and honest gaps. Do NOT produce a numeric score, match percentage, or rating. That reads as false precision.
+6. If someone pastes a job description, identify the most relevant overlap and any honest gaps, without inventing qualifications.
+7. Do NOT answer questions unrelated to Naveen's professional background (no coding help, no general knowledge, no personal opinions on unrelated topics). Politely redirect: "I can only answer questions about Naveen's experience and work."
+8. Format your answer in plain text. You may use line breaks for readability. Do not use markdown headers or bullet-point lists unless the user specifically asks for a list.
+
+CONTENT:
+${KNOWLEDGE}`
+
+  // Set up streaming response
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+  res.setHeader('Transfer-Encoding', 'chunked')
+  res.setHeader('Cache-Control', 'no-cache')
+  res.setHeader('X-Content-Type-Options', 'nosniff')
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: 'claude-sonnet-5',
+        max_tokens: 1024,
+        stream: true,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: question.trim() }],
+      }),
+    })
+
+    if (!response.ok) {
+      const errBody = await response.text()
+      console.error('Anthropic API error:', response.status, errBody)
+      return res.status(502).json({ error: 'Failed to reach AI service' })
+    }
+
+    // Stream SSE from Anthropic → plain text chunks to client
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder()
+    let buffer = ''
+
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+
+      buffer += decoder.decode(value, { stream: true })
+      const lines = buffer.split('\n')
+      buffer = lines.pop() // keep incomplete line in buffer
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue
+        const data = line.slice(6).trim()
+        if (data === '[DONE]') continue
+
+        try {
+          const event = JSON.parse(data)
+          if (
+            event.type === 'content_block_delta' &&
+            event.delta?.type === 'text_delta'
+          ) {
+            res.write(event.delta.text)
+          }
+        } catch {
+          // skip non-JSON lines
+        }
+      }
+    }
+
+    res.end()
+  } catch (err) {
+    console.error('Stream error:', err)
+    if (!res.headersSent) {
+      return res.status(500).json({ error: 'Internal server error' })
+    }
+    res.end()
+  }
+}

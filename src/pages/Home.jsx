@@ -1,6 +1,7 @@
 import Header from '../components/Header.jsx'
 import Hero from '../components/Hero.jsx'
 import Intro from '../components/Intro.jsx'
+import AskMe from '../components/AskMe.jsx'
 import Zoho from '../components/Zoho.jsx'
 import Building from '../components/Building.jsx'
 import Contact from '../components/Contact.jsx'
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <Intro />
+        <AskMe />
         <Zoho />
         <Building />
         <Contact />
