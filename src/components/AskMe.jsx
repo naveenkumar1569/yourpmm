@@ -7,6 +7,32 @@ const EXAMPLES = [
   'Has he launched products before?',
 ]
 
+// Parse basic markdown markers like **bold** and *italics* so they render natively
+function parseMarkdown(text) {
+  if (!text) return ''
+  
+  // Split on bold markers
+  const boldParts = text.split('**')
+  return boldParts.map((boldPart, i) => {
+    const isBold = i % 2 === 1
+    
+    // Within each part, split on italic markers
+    const italicParts = boldPart.split('*')
+    const content = italicParts.map((italicPart, j) => {
+      const isItalic = j % 2 === 1
+      if (isItalic) {
+        return <em key={j}>{italicPart}</em>
+      }
+      return italicPart
+    })
+
+    if (isBold) {
+      return <strong key={i}>{content}</strong>
+    }
+    return <span key={i}>{content}</span>
+  })
+}
+
 export default function AskMe() {
   const [query, setQuery] = useState('')
   const [answer, setAnswer] = useState('')
@@ -150,7 +176,7 @@ export default function AskMe() {
           <div className="askme__answer" style={{ width: '100%', maxWidth: '640px', margin: '28px auto 0 auto', textAlign: 'left' }} ref={answerRef}>
             <p className="askme__answer-label">Answer</p>
             <p className="askme__answer-text">
-              {answer}
+              {parseMarkdown(answer)}
               {loading && <span className="askme__cursor" />}
             </p>
           </div>
