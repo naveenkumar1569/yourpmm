@@ -96,39 +96,44 @@ export default function AskMe() {
   return (
     <section id="about" className="secx askme reveal">
       <div className="shell" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-        <p className="eyebrow">Interactive Portfolio</p>
-        <h2 className="secx__title" style={{ margin: '0 auto', maxWidth: '32ch', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-          Ask Naveen
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            style={{ verticalAlign: 'middle', flexShrink: 0 }}
-          >
-            <path
-              d="M12 2C12 2 12.3 8.3 16.5 12.5C20.7 16.7 22 12 22 12C22 12 15.7 12.3 11.5 16.5C7.3 20.7 12 22 12 22C12 22 11.7 15.7 7.5 11.5C3.3 7.3 2 12 2 12C2 12 8.3 11.7 12.5 7.5C16.7 3.3 12 2 12 2Z"
-              fill="url(#geminiGradient)"
-            />
-            <defs>
-              <linearGradient id="geminiGradient" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#EA4335" />    {/* Red */}
-                <stop offset="30%" stopColor="#FBBC05" />   {/* Yellow */}
-                <stop offset="65%" stopColor="#34A853" />   {/* Green */}
-                <stop offset="100%" stopColor="#4285F4" />  {/* Blue */}
-              </linearGradient>
-            </defs>
-          </svg>
+        <div className="eyebrow">
+          <span className="eyebrow-line"></span>Interactive Portfolio
+        </div>
+        <h2 className="heading">
+          <span style={{ marginRight: '14px' }}>Ask</span>
+          <span className="naveen-wrap">
+            <svg
+              className="gemini-icon"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <linearGradient id="gem-v" x1="14" y1="0" x2="14" y2="28" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#4285F4" />
+                  <stop offset="100%" stopColor="#8B5CF6" />
+                </linearGradient>
+                <linearGradient id="gem-h" x1="0" y1="14" x2="28" y2="14" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#8B5CF6" />
+                  <stop offset="100%" stopColor="#4285F4" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M14 0 C14 0 15.5 9 18.5 11.5 C21.5 14 28 14 28 14 C28 14 21.5 14 18.5 16.5 C15.5 19 14 28 14 28 C14 28 12.5 19 9.5 16.5 C6.5 14 0 14 0 14 C0 14 6.5 14 9.5 11.5 C12.5 9 14 0 14 0Z"
+                fill="url(#gem-v)"
+              />
+            </svg>
+            Naveen
+          </span>
         </h2>
-        <p className="secx__intro" style={{ margin: '14px auto 28px auto', fontSize: '18px', opacity: 0.9, maxWidth: '52ch' }}>
-          Hi, I’m Naveen’s AI. Ask me about his PMM background, SaaS products, or paste a job description. I have access to all his metrics and none of his search history.
+        <p className="subtitle">
+          Hi, I'm Naveen's AI. Ask me about his PMM background, SaaS products, or paste a job description. I have access to all his metrics and none of his search history.
         </p>
 
-        <form className="askme__form" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '640px', margin: '0 auto' }}>
-          <div className="askme__inputwrap">
+        <form className="askme__form" onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '660px', margin: '0 auto' }}>
+          <div className="input-row">
             <input
               id="askme-input"
-              className="askme__input"
               type="text"
               placeholder="e.g. Does he have GTM experience?"
               value={query}
@@ -137,7 +142,7 @@ export default function AskMe() {
               autoComplete="off"
             />
             <button
-              className="askme__btn"
+              className="send-btn"
               type="submit"
               disabled={loading || !query.trim()}
               aria-label="Ask question"
@@ -147,21 +152,20 @@ export default function AskMe() {
                   <span /><span /><span />
                 </span>
               ) : (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 9h12M9 3l6 6-6 6" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               )}
             </button>
           </div>
         </form>
 
-        <div className="askme__examples" style={{ justifyContent: 'center', maxWidth: '640px', margin: '16px auto 0 auto' }}>
+        <div className="chips">
           {EXAMPLES.map((ex) => (
             <button
               key={ex}
               type="button"
-              className="askme__chip"
+              className="chip"
               onClick={() => handleExample(ex)}
               disabled={loading}
             >
@@ -170,30 +174,22 @@ export default function AskMe() {
           ))}
         </div>
 
-        <div style={{ marginTop: '40px', marginBottom: '8px' }}>
-          <a className="dl-btn" href="/Naveen_Kumar_Resume.pdf" download="Naveen_Kumar_Resume.pdf" style={{ marginTop: '0' }}>
+        <div style={{ marginTop: '0px' }}>
+          <a
+            className="dl-btn"
+            href="/Naveen_Kumar_Resume.pdf"
+            download="Naveen_Kumar_Resume.pdf"
+            style={{ display: 'inline-flex', margin: '44px auto 0 auto' }}
+          >
             Download résumé
-            <svg
-              width="17"
-              height="17"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-              style={{ marginLeft: '8px', verticalAlign: 'middle' }}
-            >
-              <path d="M12 3v12" />
-              <path d="M7 12l5 5 5-5" />
-              <path d="M5 21h14" />
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+              <path d="M9 3v9M5 9l4 4 4-4M3 15h12" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
         </div>
 
         {(answer || loading) && (
-          <div className="askme__answer" style={{ width: '100%', maxWidth: '640px', margin: '28px auto 0 auto', textAlign: 'left' }} ref={answerRef}>
+          <div className="askme__answer" style={{ width: '100%', maxWidth: '660px', margin: '28px auto 0 auto', textAlign: 'left' }} ref={answerRef}>
             <p className="askme__answer-label">Answer</p>
             <p className="askme__answer-text">
               {parseMarkdown(answer)}
@@ -203,7 +199,7 @@ export default function AskMe() {
         )}
 
         {error && (
-          <div className="askme__error" style={{ width: '100%', maxWidth: '640px', margin: '16px auto 0 auto' }}>
+          <div className="askme__error" style={{ width: '100%', maxWidth: '660px', margin: '16px auto 0 auto' }}>
             <p>{error}</p>
           </div>
         )}
