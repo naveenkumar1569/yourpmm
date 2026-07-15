@@ -97,7 +97,7 @@ export default function AskMe() {
     <section id="about" className="secx askme reveal">
       <div className="shell" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <div className="eyebrow">
-          <span className="eyebrow-line"></span>Interactive Portfolio
+          <span className="eyebrow-line"></span>AI-Powered Portfolio
         </div>
         <h2 className="heading">
           <span style={{ marginRight: '14px' }}>Ask</span>
