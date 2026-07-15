@@ -157,34 +157,7 @@ export default function AskMe() {
           </div>
         </form>
 
-        <div className="chips">
-          {EXAMPLES.map((ex) => (
-            <button
-              key={ex}
-              type="button"
-              className="chip"
-              onClick={() => handleExample(ex)}
-              disabled={loading}
-            >
-              {ex}
-            </button>
-          ))}
-        </div>
-
-        <div style={{ marginTop: '0px' }}>
-          <a
-            className="dl-btn"
-            href="/Naveen_Kumar_Resume.pdf"
-            download="Naveen_Kumar_Resume.pdf"
-            style={{ display: 'inline-flex', margin: '44px auto 0 auto' }}
-          >
-            Download résumé
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
-              <path d="M9 3v9M5 9l4 4 4-4M3 15h12" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-        </div>
-
+        {/* Show answer immediately below the input */}
         {(answer || loading) && (
           <div className="askme__answer" style={{ width: '100%', maxWidth: '660px', margin: '28px auto 0 auto', textAlign: 'left' }} ref={answerRef}>
             <p className="askme__answer-label">Answer</p>
@@ -200,6 +173,37 @@ export default function AskMe() {
             <p>{error}</p>
           </div>
         )}
+
+        {/* Hide suggestions once a question is active */}
+        {!answer && !loading && !error && (
+          <div className="chips">
+            {EXAMPLES.map((ex) => (
+              <button
+                key={ex}
+                type="button"
+                className="chip"
+                onClick={() => handleExample(ex)}
+                disabled={loading}
+              >
+                {ex}
+              </button>
+            ))}
+          </div>
+        )}
+
+        <div style={{ marginTop: '0px' }}>
+          <a
+            className="dl-btn"
+            href="/Naveen_Kumar_Resume.pdf"
+            download="Naveen_Kumar_Resume.pdf"
+            style={{ display: 'inline-flex', margin: '44px auto 0 auto' }}
+          >
+            Download résumé
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+              <path d="M9 3v9M5 9l4 4 4-4M3 15h12" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   )
