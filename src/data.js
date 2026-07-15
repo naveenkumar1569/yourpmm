@@ -324,7 +324,7 @@ export const caseStudies = {
           },
           {
             type: 'videos',
-            title: 'A few of the stories',
+            title: 'Case studies I produced',
             items: [
               { id: 'lZqkooX62ss', company: 'Ultraviolette', title: 'Building world-class electric vehicles with Zoho Projects' },
               { id: 'U6ebGWGu2fg', company: 'Brigade Group', title: 'Reduced project timelines by 50%' },
