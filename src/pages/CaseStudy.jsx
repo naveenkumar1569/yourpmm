@@ -901,7 +901,7 @@ export default function CaseStudy() {
                         <li key={i} className="stories-index__item">
                           <a href={`#story-${i}`} className="stories-index__link">
                             <span className="stories-index__num">{String(i + 1).padStart(2, '0')}</span>
-                            <span className="stories-index__text">{s.title}</span>
+                            <span className="stories-index__text">{s.kicker || s.title}</span>
                           </a>
                         </li>
                       ))}

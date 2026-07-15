@@ -188,7 +188,7 @@ export const caseStudies = {
       {
         n: '01',
         title: 'Marketing Zoho Projects in a crowded category',
-        kicker: 'Positioning & go-to-market',
+        kicker: 'Positioning & GTM',
         blocks: [
           {
             pull: 'Zoho Projects was never the loudest name in the category. My job was to make it the clearest.',
@@ -220,7 +220,7 @@ export const caseStudies = {
       {
         n: '06',
         title: 'Building brand with out-of-home',
-        kicker: 'Brand marketing',
+        kicker: 'OOH & Brand marketing',
         blocks: [
           {
             pull: 'We showed up where our buyers already were, long before they ever searched for us.',
@@ -296,7 +296,7 @@ export const caseStudies = {
       {
         n: '02',
         title: 'Building the customer advocacy engine',
-        kicker: 'Customer advocacy',
+        kicker: 'Customer marketing',
         blocks: [
           {
             pull: 'We assumed one great customer story could work everywhere. It couldn’t.',
