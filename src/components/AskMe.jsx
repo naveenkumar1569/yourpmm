@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react'
 
 const EXAMPLES = [
-  'What makes Naveen different from a typical PMM?',
-  'Walk me through a product launch he led',
-  'Has he built and marketed his own products?',
-  'Paste a JD and see if he fits',
+  'How did he position Zoho Projects against Asana and Monday?',
+  'How did the Projects Plus launch beat its ARR target by 50%?',
+  'How did he build a 75+ customer story engine from scratch?',
+  'He built SaaS products himself — how does that make him a better PMM?',
 ]
 
 // Parse basic markdown markers like **bold** and *italics* so they render natively
