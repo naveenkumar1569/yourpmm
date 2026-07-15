@@ -1,10 +1,10 @@
 import { useState, useRef } from 'react'
 
 const EXAMPLES = [
-  'Summarize Naveen in 30 seconds',
-  'Does he have pricing experience?',
-  'Tell me about Reochart',
-  'Has he launched products before?',
+  'What makes Naveen different from a typical PMM?',
+  'Walk me through a product launch he led',
+  'Has he built and marketed his own products?',
+  'Paste a JD and see if he fits',
 ]
 
 // Parse basic markdown markers like **bold** and *italics* so they render natively
@@ -96,9 +96,6 @@ export default function AskMe() {
   return (
     <section id="about" className="secx askme reveal">
       <div className="shell" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-        <div className="eyebrow">
-          <span className="eyebrow-line"></span>AI-Powered Portfolio
-        </div>
         <h2 className="heading">
           <span style={{ marginRight: '14px' }}>Ask</span>
           <span className="naveen-wrap">
