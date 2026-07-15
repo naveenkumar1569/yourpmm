@@ -18,6 +18,22 @@ function fmt(text) {
   )
 }
 
+// Highlight numbers in purple (accent color) and reduce general text weight.
+function formatSummary(text) {
+  if (!text) return ''
+  const regex = /(\b\d+(?:\+|-|%)?|~\d+%|\bTwo\b|\bfive\b|\bzero\b)/i
+  return text.split(regex).map((part, i) => {
+    if (regex.test(part)) {
+      return (
+        <span className="glance__highlight" key={i}>
+          {part}
+        </span>
+      )
+    }
+    return part
+  })
+}
+
 function StatPills({ stats }) {
   return (
     <div className="statrow">
@@ -817,7 +833,7 @@ export default function CaseStudy() {
         <section className="glance">
           <div className="shell">
             <p className="glance__label">At a glance</p>
-            <p className="glance__thesis">{cs.summary}</p>
+            <p className="glance__thesis">{formatSummary(cs.summary)}</p>
             {(cs.execStats || cs.stats) && (
               <div
                 className={`execgrid execgrid--col${Math.min((cs.execStats || cs.stats).length, 4)}`}

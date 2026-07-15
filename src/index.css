@@ -1363,11 +1363,16 @@ img {
 .glance__thesis {
   margin-top: 16px;
   font-size: clamp(20px, 2.5vw, 28px);
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.4;
   color: var(--ink);
   max-width: 40ch;
+}
+
+.glance__highlight {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .glance .istats {
