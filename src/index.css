@@ -422,21 +422,29 @@ img {
   right: -38px;
   width: 32px;
   height: 32px;
-  animation: gemini-twinkle 3s ease-in-out infinite;
   transform-origin: center;
+  animation:
+    gemini-sparkle 2.4s ease-in-out infinite,
+    gemini-drift 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.4));
 }
 
-@keyframes gemini-twinkle {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-    filter: drop-shadow(0 0 2px rgba(124, 90, 246, 0.3));
-  }
-  50% {
-    transform: scale(1.15) rotate(15deg);
-    opacity: 0.8;
-    filter: drop-shadow(0 0 8px rgba(124, 90, 246, 0.7));
-  }
+/* Quick sparkle bursts with calm pauses */
+@keyframes gemini-sparkle {
+  0%   { transform: scale(1) rotate(0deg); opacity: 0.85; }
+  8%   { transform: scale(1.35) rotate(8deg); opacity: 1; filter: drop-shadow(0 0 12px rgba(66, 133, 244, 0.9)); }
+  16%  { transform: scale(0.9) rotate(-4deg); opacity: 0.7; filter: drop-shadow(0 0 2px rgba(139, 92, 246, 0.3)); }
+  24%  { transform: scale(1.2) rotate(5deg); opacity: 1; filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.8)); }
+  32%  { transform: scale(1) rotate(0deg); opacity: 0.85; filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.4)); }
+  100% { transform: scale(1) rotate(0deg); opacity: 0.85; filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.4)); }
+}
+
+/* Slow gentle float for organic feel */
+@keyframes gemini-drift {
+  0%, 100% { translate: 0 0; }
+  25%      { translate: 1px -2px; }
+  50%      { translate: -1px -1px; }
+  75%      { translate: 1px 1px; }
 }
 
 .askme .subtitle {
