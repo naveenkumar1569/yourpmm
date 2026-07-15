@@ -422,6 +422,21 @@ img {
   right: -38px;
   width: 32px;
   height: 32px;
+  animation: gemini-twinkle 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes gemini-twinkle {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 2px rgba(124, 90, 246, 0.3));
+  }
+  50% {
+    transform: scale(1.15) rotate(15deg);
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(124, 90, 246, 0.7));
+  }
 }
 
 .askme .subtitle {
