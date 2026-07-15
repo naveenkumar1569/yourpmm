@@ -211,7 +211,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'A question is required' })
   }
 
-  if (question.length > 1000) {
+  if (question.length > 15000) {
     return res.status(400).json({ error: 'Question is too long' })
   }
 
@@ -244,7 +244,7 @@ RULES — follow these strictly:
     - Enterprise SaaS GTM.
     - Technical background.
     - Founder experience.
-14. Be conversational. Avoid writing long essays. Aim for 2-5 short paragraphs or clean bullet points unless the visitor asks for a detailed analysis. Recruiters skim. Be concise first, detailed second.
+14. Be conversational. Avoid writing long essays. Aim for 2-5 short paragraphs or clean bullet points unless the visitor asks for a detailed analysis. Recruiters skim. Be concise first, detailed second. **HEAVILY USE formatting like bold (**bold**), italics (*italics*), and bullet points to structure your answer so it looks highly scannable and professional.**
 15. End most answers with one relevant follow-up suggestion. Never use meta-commentary, introductory framing (like "Here is how I would frame this...", "Good context...", or "That is a great question..."), or break character. Simply present the response directly and end with the follow-up suggestion.
     For example:
     "You might also want to ask about his leadership philosophy."
@@ -303,7 +303,7 @@ ${KNOWLEDGE}`
       },
       body: JSON.stringify({
         model: 'claude-sonnet-5',
-        max_tokens: 2048,
+        max_tokens: 4096,
         stream: true,
         system: systemPrompt,
         messages: [{ role: 'user', content: question.trim() }],

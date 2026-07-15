@@ -1,36 +1,50 @@
 import { useState, useRef } from 'react'
 
 const EXAMPLES = [
-  'How did he position Zoho Projects against Asana and Monday?',
-  'How did the Projects Plus launch beat its ARR target by 50%?',
-  'How did he build a 75+ customer story engine from scratch?',
-  'He built SaaS products himself — how does that make him a better PMM?',
+  'Tell me about Naveen.',
+  'What makes Naveen different from other Product Marketing Managers?',
+  'How has building SaaS products made Naveen a better PMM?',
+  'Would Naveen be a good fit for this role? (Paste a JD)',
 ]
 
-// Parse basic markdown markers like **bold** and *italics* so they render natively
+// Parse basic markdown markers like **bold**, *italics*, and newlines so they render natively
 function parseMarkdown(text) {
   if (!text) return ''
   
-  // Split on bold markers
-  const boldParts = text.split('**')
-  return boldParts.map((boldPart, i) => {
-    const isBold = i % 2 === 1
-    
-    // Within each part, split on italic markers
-    const italicParts = boldPart.split('*')
-    const content = italicParts.map((italicPart, j) => {
-      const isItalic = j % 2 === 1
-      if (isItalic) {
-        return <em key={j}>{italicPart}</em>
-      }
-      return italicPart
-    })
+  // Split on double newlines for paragraphs
+  return text.split('\n\n').map((paragraph, pIndex) => (
+    <p key={`p-${pIndex}`} style={{ marginBottom: '1em', marginTop: 0 }}>
+      {paragraph.split('\n').map((line, lIndex) => {
+        // Split on bold markers
+        const boldParts = line.split('**')
+        const parsedLine = boldParts.map((boldPart, i) => {
+          const isBold = i % 2 === 1
+          
+          // Within each part, split on italic markers
+          const italicParts = boldPart.split('*')
+          const content = italicParts.map((italicPart, j) => {
+            const isItalic = j % 2 === 1
+            if (isItalic) {
+              return <em key={`i-${i}-${j}`}>{italicPart}</em>
+            }
+            return italicPart
+          })
 
-    if (isBold) {
-      return <strong key={i}>{content}</strong>
-    }
-    return <span key={i}>{content}</span>
-  })
+          if (isBold) {
+            return <strong key={`b-${i}`}>{content}</strong>
+          }
+          return <span key={`s-${i}`}>{content}</span>
+        })
+
+        return (
+          <span key={`l-${lIndex}`}>
+            {parsedLine}
+            {lIndex < paragraph.split('\n').length - 1 && <br />}
+          </span>
+        )
+      })}
+    </p>
+  ))
 }
 
 export default function AskMe() {
@@ -161,10 +175,10 @@ export default function AskMe() {
         {(answer || loading) && (
           <div className="askme__answer" style={{ width: '100%', maxWidth: '660px', margin: '28px auto 0 auto', textAlign: 'left' }} ref={answerRef}>
             <p className="askme__answer-label">Answer</p>
-            <p className="askme__answer-text">
+            <div className="askme__answer-text">
               {parseMarkdown(answer)}
-              {loading && <span className="askme__cursor" />}
-            </p>
+              {loading && <span className="askme__cursor" style={{ display: 'inline-block' }} />}
+            </div>
           </div>
         )}
 
