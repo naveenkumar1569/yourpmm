@@ -517,18 +517,13 @@ img {
 }
 
 .askme .chips {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
   margin-top: 18px;
-  max-width: 660px;
+  max-width: 720px;
   width: 100%;
-}
-
-@media (max-width: 640px) {
-  .askme .chips {
-    grid-template-columns: 1fr;
-  }
 }
 
 .askme .chip {
